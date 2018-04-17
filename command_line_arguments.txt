@@ -1,0 +1,28 @@
+1.create hdf5
+
+THEANO_FLAGS='device=gpu0, floatX=float32, nvcc.fastmath=True' python create_hdf5.py --dataset_dir 'e:/project/project/image/input_3_64_10000_rot/10' --channel 3 --hdf5_file 'e:/project/project/image/input_3_64_10000_rot/hdf5/bamboo_3_64_rot.hdf5'
+
+2.train dcgan
+
+
+
+$ THEANO_FLAGS='device=gpu0, floatX=float32, nvcc.fastmath=True' python train_dcgan.py --model_name bamboo_3_64_rot --data_file 'e:/project/project/image/input_3_64_10000_rot/hdf5/bamboo_3_64_rot.hdf5' --save_freq 2
+
+3. train batchnorm
+
+THEANO_FLAGS='device=gpu0, floatX=float32, nvcc.fastmath=True' python batchnorm_dcgan.py --model_name bamboo_3_64_rot
+
+4. train z model
+
+THEANO_FLAGS='device=gpu0, floatX=float32, nvcc.fastmath=True' python train_predict_z.py --model_name bamboo_3_64_rot --batch_size 64
+
+5.train z batchnorm
+
+THEANO_FLAGS='device=gpu0, floatX=float32, nvcc.fastmath=True' python batchnorm_predict_z.py --model_name bamboo_3_64_rot
+
+6. pack model
+
+python pack_model.py --model_name bamboo_3_64_rot --output_model bamboo_3_64_rot.dcgan_theano
+
+7. iGAN main
+THEANO_FLAGS='device=gpu0, floatX=float32, nvcc.fastmath=True' python iGAN_main.py --model_name bamboo_3_64_rot
