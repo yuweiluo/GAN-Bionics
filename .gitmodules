@@ -1,3 +1,0 @@
-[submodule "wgan-gp/wgan-gp"]
-	path = wgan-gp/wgan-gp
-	url = https://github.com/igul222/improved_wgan_training.git
