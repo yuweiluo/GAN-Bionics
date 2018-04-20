@@ -1,3 +1,6 @@
 [submodule "wgan-gp"]
 	path = wgan-gp
 	url = https://github.com/igul222/improved_wgan_training.git
+[submodule "gan_practice"]
+	path = gan_practice
+	url = https://github.com/handspeaker/gan_practice.git
